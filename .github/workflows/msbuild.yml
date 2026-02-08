@@ -18,7 +18,7 @@ on:
       platform:
         description: 'Build Platform'
         required: true
-        default: 'Win32'
+        default: 'x64'
         type: choice
         options:
         - Win32
