@@ -1044,8 +1044,8 @@ void ExecuteAICommand(AICommand* cmd) {
         Exported.ShowMessage(message);
     } else if (strcmp(cmd->command, "GET_MAIN_WINDOW_HANDLE") == 0) {
         // 格式：GET_MAIN_WINDOW_HANDLE
-        UINT_PTR hwnd = (UINT_PTR)Exported.GetMainWindowHandle();
-        sprintf_s(message, sizeof(message), "GET_MAIN_WINDOW_HANDLE result: HWND = 0x%IX", hwnd);
+        HANDLE hwnd = (HANDLE)(UINT_PTR)Exported.GetMainWindowHandle();
+        sprintf_s(message, sizeof(message), "GET_MAIN_WINDOW_HANDLE result: HWND = 0x%p", hwnd);
         Exported.ShowMessage(message);
     } else if (strcmp(cmd->command, "MESSAGE_DIALOG") == 0) {
         // 格式：MESSAGE_DIALOG:message,messagetype,buttoncombination
