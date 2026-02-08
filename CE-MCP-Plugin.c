@@ -672,7 +672,7 @@ void ExecuteAICommand(AICommand* cmd) {
         if (addressStr != NULL) {
             UINT_PTR address = ParseAddress(addressStr);
             UINT_PTR prevAddr = (UINT_PTR)Exported.previousOpcode(address);
-            sprintf_s(message, sizeof(message), "PREVIOUS_OPCODE result: Current: 0x%08X, Previous: 0x%08X", address, prevAddr);
+            sprintf_s(message, sizeof(message), "PREVIOUS_OPCODE result: Current: 0x%IX, Previous: 0x%IX", address, prevAddr);
             Exported.ShowMessage(message);
         } else {
             Exported.ShowMessage("Error: Missing address parameter for PREVIOUS_OPCODE");
@@ -684,7 +684,7 @@ void ExecuteAICommand(AICommand* cmd) {
         if (addressStr != NULL) {
             UINT_PTR address = ParseAddress(addressStr);
             UINT_PTR nextAddr = (UINT_PTR)Exported.nextOpcode(address);
-            sprintf_s(message, sizeof(message), "NEXT_OPCODE result: Current: 0x%08X, Next: 0x%08X", address, nextAddr);
+            sprintf_s(message, sizeof(message), "NEXT_OPCODE result: Current: 0x%IX, Next: 0x%IX", address, nextAddr);
             Exported.ShowMessage(message);
         } else {
             Exported.ShowMessage("Error: Missing address parameter for NEXT_OPCODE");
