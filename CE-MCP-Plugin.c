@@ -671,7 +671,7 @@ void ExecuteAICommand(AICommand* cmd) {
         char* addressStr = strtok_s(cmd->parameters, ",", &context);
         if (addressStr != NULL) {
             UINT_PTR address = ParseAddress(addressStr);
-            DWORD prevAddr = Exported.previousOpcode(address);
+            UINT_PTR prevAddr = (UINT_PTR)Exported.previousOpcode(address);
             sprintf_s(message, sizeof(message), "PREVIOUS_OPCODE result: Current: 0x%IX, Previous: 0x%IX", address, prevAddr);
             Exported.ShowMessage(message);
         } else {
@@ -683,7 +683,7 @@ void ExecuteAICommand(AICommand* cmd) {
         char* addressStr = strtok_s(cmd->parameters, ",", &context);
         if (addressStr != NULL) {
             UINT_PTR address = ParseAddress(addressStr);
-            DWORD nextAddr = Exported.nextOpcode(address);
+            UINT_PTR nextAddr = (UINT_PTR)Exported.nextOpcode(address);
             sprintf_s(message, sizeof(message), "NEXT_OPCODE result: Current: 0x%IX, Next: 0x%IX", address, nextAddr);
             Exported.ShowMessage(message);
         } else {
@@ -1044,8 +1044,8 @@ void ExecuteAICommand(AICommand* cmd) {
         Exported.ShowMessage(message);
     } else if (strcmp(cmd->command, "GET_MAIN_WINDOW_HANDLE") == 0) {
         // 格式：GET_MAIN_WINDOW_HANDLE
-        HANDLE hwnd = Exported.GetMainWindowHandle();
-        sprintf_s(message, sizeof(message), "GET_MAIN_WINDOW_HANDLE result: HWND = 0x%p", hwnd);
+        UINT_PTR hwnd = (UINT_PTR)Exported.GetMainWindowHandle();
+        sprintf_s(message, sizeof(message), "GET_MAIN_WINDOW_HANDLE result: HWND = 0x%IX", hwnd);
         Exported.ShowMessage(message);
     } else if (strcmp(cmd->command, "MESSAGE_DIALOG") == 0) {
         // 格式：MESSAGE_DIALOG:message,messagetype,buttoncombination
